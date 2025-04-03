@@ -14,6 +14,7 @@ import { determineProjectNameAndRootOptions } from '@nx/devkit/src/generators/pr
 import { join } from 'path';
 import { appifyGenerator } from '../appify/appify';
 import { AppGeneratorSchema } from './schema';
+import * as path from 'node:path';
 
 interface NormalizedSchema extends AppGeneratorSchema {
   projectRoot: string;
@@ -30,9 +31,8 @@ async function normalizeOptions(
       name: options.name,
       projectType: 'application',
       directory: options.directory,
-      projectNameAndRootFormat: options.projectNameAndRootFormat,
-      rootProject: false,
-      callingGenerator: '@nx-iac/aws-cdk:app',
+      importPath: path.join(options.directory , options.name),
+      rootProject: false
     }
   );
 

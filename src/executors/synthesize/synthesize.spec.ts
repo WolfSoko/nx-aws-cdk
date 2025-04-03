@@ -8,6 +8,7 @@ import { createTreeWithEmptyWorkspace } from '@nx/devkit/testing';
 import { synthesizeExecutor } from './synthesize';
 import * as fs from 'node:fs';
 import * as child_process from 'node:child_process';
+import * as path from 'node:path';
 
 describe('synthesize', () => {
   let tree: Tree;
@@ -22,6 +23,8 @@ describe('synthesize', () => {
       root: 'apps/test-project',
     });
     executorContext = {
+      nxJsonConfiguration: undefined,
+      projectGraph: undefined,
       root: '/virtual',
       cwd: '/virtual',
       projectName: 'test-project',
@@ -32,7 +35,7 @@ describe('synthesize', () => {
       },
     };
     expectedExecOptions = {
-      cwd: '/virtual/apps/test-project',
+      cwd: path.normalize('/virtual/apps/test-project'),
       maxBuffer: 1024000000,
     };
     rmSpy.mockImplementation(() => undefined);
@@ -41,13 +44,13 @@ describe('synthesize', () => {
   it('should delete the output directory', async () => {
     await synthesizeExecutor(
       {
-        output: 'cdk.out/apps/test-app',
+        output: `cdk.out/apps/test-app`,
       },
       executorContext
     );
 
     expect(rmSpy).toHaveBeenCalledWith<[fs.PathLike, fs.RmOptions]>(
-      'cdk.out/apps/test-app',
+      `cdk.out/apps/test-app`,
       {
         recursive: true,
         force: true,
@@ -66,7 +69,9 @@ describe('synthesize', () => {
     );
 
     expect(execSpy).toHaveBeenCalledWith<[string, child_process.ExecOptions]>(
-      '/virtual/node_modules/.bin/cdk synthesize --output ../../cdk.out/apps/test-app',
+      `${path.normalize(
+        '/virtual/node_modules/.bin/cdk'
+      )} synthesize --output ${path.normalize('../../cdk.out/apps/test-app')}`,
       expectedExecOptions
     );
   });
@@ -84,7 +89,11 @@ describe('synthesize', () => {
       );
 
       expect(execSpy).toHaveBeenCalledWith<[string, child_process.ExecOptions]>(
-        '/virtual/node_modules/.bin/cdk synthesize some-stack --output ../../cdk.out/apps/test-app',
+        `${path.normalize(
+          '/virtual/node_modules/.bin/cdk'
+        )} synthesize some-stack --output ${path.normalize(
+          '../../cdk.out/apps/test-app'
+        )}`,
         expectedExecOptions
       );
     });
@@ -103,7 +112,11 @@ describe('synthesize', () => {
       );
 
       expect(execSpy).toHaveBeenCalledWith<[string, child_process.ExecOptions]>(
-        '/virtual/node_modules/.bin/cdk synthesize --quiet --output ../../cdk.out/apps/test-app',
+        `${path.normalize(
+          '/virtual/node_modules/.bin/cdk'
+        )} synthesize --quiet --output ${path.normalize(
+          '../../cdk.out/apps/test-app'
+        )}`,
         expectedExecOptions
       );
     });
@@ -122,7 +135,11 @@ describe('synthesize', () => {
       );
 
       expect(execSpy).toHaveBeenCalledWith<[string, child_process.ExecOptions]>(
-        '/virtual/node_modules/.bin/cdk synthesize --output ../../cdk.out/apps/test-app --context first=1',
+        `${path.normalize(
+          '/virtual/node_modules/.bin/cdk'
+        )} synthesize --output ${path.normalize(
+          '../../cdk.out/apps/test-app'
+        )} --context first=1`,
         expectedExecOptions
       );
     });
@@ -139,7 +156,11 @@ describe('synthesize', () => {
       );
 
       expect(execSpy).toHaveBeenCalledWith<[string, child_process.ExecOptions]>(
-        '/virtual/node_modules/.bin/cdk synthesize --output ../../cdk.out/apps/test-app --context second=2 --context random=value',
+        `${path.normalize(
+          '/virtual/node_modules/.bin/cdk'
+        )} synthesize --output ${path.normalize(
+          '../../cdk.out/apps/test-app'
+        )} --context second=2 --context random=value`,
         expectedExecOptions
       );
     });

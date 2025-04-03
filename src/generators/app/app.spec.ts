@@ -75,13 +75,6 @@ describe('app', () => {
       outputs: ['{workspaceRoot}/coverage/{projectRoot}'],
       options: {
         jestConfig: 'test-project/jest.config.ts',
-        passWithNoTests: true,
-      },
-      configurations: {
-        ci: {
-          ci: true,
-          codeCoverage: true,
-        },
       },
     });
 
@@ -101,7 +94,6 @@ describe('app', () => {
     const projectConfiguration = readProjectConfiguration(tree, 'test-project');
     expect(projectConfiguration.targets['lint']).toEqual<TargetConfiguration>({
       executor: '@nx/eslint:lint',
-      outputs: ['{options.outputFile}'],
       options: {
         lintFilePatterns: ['test-project/**/*.ts'],
       },

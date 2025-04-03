@@ -2,6 +2,7 @@ import { Tree } from '@nx/devkit';
 import { createTreeWithEmptyWorkspace } from '@nx/devkit/testing';
 import { bootstrapGenerator } from './bootstrap';
 import * as child_process from 'node:child_process';
+import * as path from 'node:path';
 
 describe('bootstrap', () => {
   let tree: Tree;
@@ -19,7 +20,9 @@ describe('bootstrap', () => {
     });
 
     expect(execSpy).toHaveBeenCalledWith<[string, child_process.ExecOptions]>(
-      '/virtual/node_modules/.bin/cdk bootstrap 123/eu-west-1',
+      `${path.normalize(
+        '/virtual/node_modules/.bin/cdk'
+      )} bootstrap 123/eu-west-1`,
       {
         cwd: tree.root,
         maxBuffer: 1024000000,

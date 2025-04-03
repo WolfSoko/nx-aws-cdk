@@ -7,6 +7,7 @@ import {
 import { createTreeWithEmptyWorkspace } from '@nx/devkit/testing';
 import { destroyExecutor } from './destroy';
 import * as child_process from 'node:child_process';
+import * as path from 'node:path';
 
 describe('destroy', () => {
   let tree: Tree;
@@ -19,6 +20,7 @@ describe('destroy', () => {
       root: 'apps/test-project',
     });
     executorContext = {
+      projectGraph: {} as unknown as ExecutorContext['projectGraph'],
       root: '/virtual',
       cwd: '/virtual',
       projectName: 'test-project',
@@ -27,9 +29,10 @@ describe('destroy', () => {
         version: -1,
         projects: Object.fromEntries(getProjects(tree)),
       },
+      nxJsonConfiguration: {},
     };
     expectedExecOptions = {
-      cwd: '/virtual/apps/test-project',
+      cwd: path.normalize('/virtual/apps/test-project'),
       maxBuffer: 1024000000,
     };
     jest.clearAllMocks();
@@ -41,7 +44,7 @@ describe('destroy', () => {
     await destroyExecutor({}, executorContext);
 
     expect(execSpy).toHaveBeenCalledWith<[string, child_process.ExecOptions]>(
-      '/virtual/node_modules/.bin/cdk destroy',
+      `${path.normalize('/virtual/node_modules/.bin/cdk')} destroy`,
       expectedExecOptions
     );
   });
@@ -58,7 +61,7 @@ describe('destroy', () => {
       );
 
       expect(execSpy).toHaveBeenCalledWith<[string, child_process.ExecOptions]>(
-        '/virtual/node_modules/.bin/cdk destroy --all',
+        `${path.normalize('/virtual/node_modules/.bin/cdk')} destroy --all`,
         expectedExecOptions
       );
     });
@@ -76,7 +79,9 @@ describe('destroy', () => {
       );
 
       expect(execSpy).toHaveBeenCalledWith<[string, child_process.ExecOptions]>(
-        '/virtual/node_modules/.bin/cdk destroy --app "../../cdk.out/apps/test-app"',
+        `${path.normalize(
+          '/virtual/node_modules/.bin/cdk'
+        )} destroy --app "${path.normalize('../../cdk.out/apps/test-app')}"`,
         expectedExecOptions
       );
     });
@@ -94,7 +99,7 @@ describe('destroy', () => {
       );
 
       expect(execSpy).toHaveBeenCalledWith<[string, child_process.ExecOptions]>(
-        '/virtual/node_modules/.bin/cdk destroy --force',
+        `${path.normalize('/virtual/node_modules/.bin/cdk')} destroy --force`,
         expectedExecOptions
       );
     });

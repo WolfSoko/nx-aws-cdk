@@ -7,6 +7,7 @@ import {
 import { createTreeWithEmptyWorkspace } from '@nx/devkit/testing';
 import * as child_process from 'node:child_process';
 import { deployExecutor } from './deploy';
+import * as path from 'node:path';
 
 describe('deploy', () => {
   let tree: Tree;
@@ -19,6 +20,8 @@ describe('deploy', () => {
       root: 'apps/test-project',
     });
     executorContext = {
+      nxJsonConfiguration: undefined,
+      projectGraph: {} as unknown as ExecutorContext['projectGraph'],
       root: '/virtual',
       cwd: '/virtual',
       projectName: 'test-project',
@@ -29,7 +32,7 @@ describe('deploy', () => {
       },
     };
     expectedExecOptions = {
-      cwd: '/virtual/apps/test-project',
+      cwd: path.normalize(`/virtual/apps/test-project`),
       maxBuffer: 1024000000,
     };
     jest.clearAllMocks();
@@ -41,7 +44,7 @@ describe('deploy', () => {
     await deployExecutor({}, executorContext);
 
     expect(execSpy).toHaveBeenCalledWith<[string, child_process.ExecOptions]>(
-      '/virtual/node_modules/.bin/cdk deploy',
+      path.normalize('/virtual/node_modules/.bin/cdk') + ' deploy',
       expectedExecOptions
     );
   });
@@ -58,7 +61,7 @@ describe('deploy', () => {
       );
 
       expect(execSpy).toHaveBeenCalledWith<[string, child_process.ExecOptions]>(
-        '/virtual/node_modules/.bin/cdk deploy *',
+        path.normalize('/virtual/node_modules/.bin/cdk') + ' deploy *',
         expectedExecOptions
       );
     });
@@ -76,7 +79,9 @@ describe('deploy', () => {
       );
 
       expect(execSpy).toHaveBeenCalledWith<[string, child_process.ExecOptions]>(
-        '/virtual/node_modules/.bin/cdk deploy --app "../../cdk.out/apps/test-app"',
+        `${path.normalize(
+          '/virtual/node_modules/.bin/cdk'
+        )} deploy --app "${path.normalize('../../cdk.out/apps/test-app')}"`,
         expectedExecOptions
       );
     });
@@ -94,7 +99,9 @@ describe('deploy', () => {
       );
 
       expect(execSpy).toHaveBeenCalledWith<[string, child_process.ExecOptions]>(
-        '/virtual/node_modules/.bin/cdk deploy --hotswap-fallback',
+        `${path.normalize(
+          '/virtual/node_modules/.bin/cdk'
+        )} deploy --hotswap-fallback`,
         expectedExecOptions
       );
     });
@@ -112,7 +119,9 @@ describe('deploy', () => {
       );
 
       expect(execSpy).toHaveBeenCalledWith<[string, child_process.ExecOptions]>(
-        '/virtual/node_modules/.bin/cdk deploy --no-rollback',
+        `${path.normalize(
+          '/virtual/node_modules/.bin/cdk'
+        )} deploy --no-rollback`,
         expectedExecOptions
       );
     });
@@ -130,7 +139,9 @@ describe('deploy', () => {
       );
 
       expect(execSpy).toHaveBeenCalledWith<[string, child_process.ExecOptions]>(
-        '/virtual/node_modules/.bin/cdk deploy --context first=1',
+        `${path.normalize(
+          '/virtual/node_modules/.bin/cdk'
+        )} deploy --context first=1`,
         expectedExecOptions
       );
     });
@@ -146,7 +157,9 @@ describe('deploy', () => {
       );
 
       expect(execSpy).toHaveBeenCalledWith<[string, child_process.ExecOptions]>(
-        '/virtual/node_modules/.bin/cdk deploy --context second=2 --context random=value',
+        `${path.normalize(
+          '/virtual/node_modules/.bin/cdk'
+        )} deploy --context second=2 --context random=value`,
         expectedExecOptions
       );
     });
