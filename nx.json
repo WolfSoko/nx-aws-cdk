@@ -19,9 +19,7 @@
       "cache": true,
       "inputs": ["default", "^production", "{workspaceRoot}/jest.preset.js"]
     },
-    "e2e": {
-      "cache": true
-    }
+    "e2e": { "cache": true }
   },
   "namedInputs": {
     "default": ["{projectRoot}/**/*", "sharedGlobals"],
@@ -38,5 +36,6 @@
       "!{projectRoot}/tools/**/*.[jt]s"
     ],
     "sharedGlobals": []
-  }
+  },
+  "nxCloudAccessToken": "N2ViNzVhMmEtZmU1Yi00N2RmLTkxYmItZDI1OGM5Y2I1NTQ5fHJlYWQtd3JpdGU="
 }
