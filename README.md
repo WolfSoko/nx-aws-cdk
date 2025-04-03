@@ -1,4 +1,4 @@
-# @nx-iac/aws-cdk
+# forked from @nx-iac/aws-cdk as it seems to not be maintained anymore
 
 Empowers your [Nx](https://nx.dev) workspace with [AWS CDK](https://aws.amazon.com/cdk/) capabilities ⚡
 
@@ -116,6 +116,7 @@ nx destroy <app-name>
 ## Maintainer
 
 [@joelklint](https://github.com/joelklint)
+[@WolfSoko](https://github.com/WolfSoko)
 
 ## Thanks
 
