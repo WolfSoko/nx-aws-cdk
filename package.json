@@ -64,5 +64,5 @@
   "typings": "./src/index.d.ts",
   "generators": "./generators.json",
   "executors": "./executors.json",
-  "packageManager": "pnpm@8.9.2"
+  "packageManager": "pnpm@10.7.1"
 }
