@@ -5,12 +5,12 @@ import {
   runTasksInSerial,
 } from '@nx/devkit';
 
-export const CDK_VERSION = '^2.102.0' as const;
-export const CONSTRUCTS_VERSION = '^10.3.0' as const;
-export const TSX_VERSION = '^3.14.0' as const;
+export const CDK_VERSION = '^2.1007.0' as const;
+export const CONSTRUCTS_VERSION = '^10.4.0' as const;
+export const TSX_VERSION = '^4.19.0' as const;
 
 async function addDependencies(tree: Tree): Promise<GeneratorCallback> {
-  return await addDependenciesToPackageJson(
+  return addDependenciesToPackageJson(
     tree,
     {},
     {
@@ -18,7 +18,9 @@ async function addDependencies(tree: Tree): Promise<GeneratorCallback> {
       'aws-cdk-lib': CDK_VERSION,
       constructs: CONSTRUCTS_VERSION,
       tsx: TSX_VERSION,
-    }
+    },
+    undefined,
+    false
   );
 }
 
