@@ -31,7 +31,7 @@ describe('app e2e', () => {
       `generate @wolsok/aws-cdk:app ${project} --directory apps/subdir/${project} --project-name-and-root-format as-provided`
     );
     const result = await runNxCommandAsync(`build ${project}`);
-    expect(result.stdout).toContain('Successfully ran target build');
+    expect(result.stdout).toContain(/.*Successfully ran target build.*/g);
   }, 120000);
 
   describe('--directory', () => {
