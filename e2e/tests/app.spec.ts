@@ -6,6 +6,7 @@ import {
   uniq,
 } from '@nx/plugin/testing';
 import { names } from '@nx/devkit';
+import * as path from 'node:path';
 
 describe('app e2e', () => {
   // Setting up individual workspaces per
@@ -42,17 +43,19 @@ describe('app e2e', () => {
 
       expect(() =>
         checkFilesExist(
-          `apps/subdir/${project}/cdk.json`,
-          `apps/subdir/${project}/tsconfig.json`,
-          `apps/subdir/${project}/tsconfig.app.json`,
-          `apps/subdir/${project}/tsconfig.spec.json`,
-          `apps/subdir/${project}/jest.config.ts`,
-          `apps/subdir/${project}/eslint.config.mjs`,
-          `apps/subdir/${project}/src/main.ts`,
-          `apps/subdir/${project}/src/main.spec.ts`,
-          `apps/subdir/${project}/cdk/${names(project).className}App.ts'`, // This fails, even though the file exists 🤷‍♂️
-          `apps/subdir/${project}/cdk/stacks/SampleStack.ts`,
-          `apps/subdir/${project}/cdk/stacks/SampleStack.spec.ts`
+          ...[
+            `apps/subdir/${project}/cdk.json`,
+            `apps/subdir/${project}/tsconfig.json`,
+            `apps/subdir/${project}/tsconfig.app.json`,
+            `apps/subdir/${project}/tsconfig.spec.json`,
+            `apps/subdir/${project}/jest.config.ts`,
+            `apps/subdir/${project}/eslint.config.mjs`,
+            `apps/subdir/${project}/src/main.ts`,
+            `apps/subdir/${project}/src/main.spec.ts`,
+            `apps/subdir/${project}/cdk/${names(project).className}App.ts`,
+            `apps/subdir/${project}/cdk/stacks/SampleStack.ts`,
+            `apps/subdir/${project}/cdk/stacks/SampleStack.spec.ts`,
+          ].map((file) => path.normalize(file))
         )
       ).not.toThrow();
     }, 120000);
