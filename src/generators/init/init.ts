@@ -1,12 +1,12 @@
 import {
-  GeneratorCallback,
-  Tree,
   addDependenciesToPackageJson,
+  GeneratorCallback,
   runTasksInSerial,
+  Tree,
 } from '@nx/devkit';
 
 export const CDK_VERSION = '^2.1007.0' as const;
-export const CDK_LIB_VERSION = CDK_VERSION
+export const CDK_LIB_VERSION = CDK_VERSION;
 export const CONSTRUCTS_VERSION = '^10.4.0' as const;
 export const TSX_VERSION = '^4.19.0' as const;
 

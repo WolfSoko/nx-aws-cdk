@@ -1,5 +1,5 @@
 {
-  "name": "@nx-iac/aws-cdk",
+  "name": "@wolsok/aws-cdk",
   "version": "0.0.1",
   "description": "Empowers your Nx workspace with AWS CDK capabilities ⚡",
   "keywords": [
@@ -8,16 +8,15 @@
     "cdk",
     "aws cdk",
     "aws-cdk",
-    "iac"
+    "wolfsoko"
   ],
   "license": "MIT",
   "author": {
-    "name": "Joel Klint",
-    "email": "joel.klint@gmail.com"
+    "name": "Wolfram Sokollek"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/joelklint/nx-aws-cdk.git"
+    "url": "https://github.com/WolfSoko/nx-aws-cdk.git"
   },
   "scripts": {
     "prepare": "husky install",
