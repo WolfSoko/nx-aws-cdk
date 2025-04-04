@@ -8,9 +8,18 @@ importers:
 
   .:
     dependencies:
+      '@eslint/eslintrc':
+        specifier: ^2.1.1
+        version: 2.1.4
+      '@eslint/js':
+        specifier: ^9.24.0
+        version: 9.24.0
       '@nx/devkit':
         specifier: 20.7.1
         version: 20.7.1(nx@20.7.1(@swc-node/register@1.10.10(@swc/core@1.11.16)(@swc/types@0.1.21)(typescript@5.7.3))(@swc/core@1.11.16))
+      '@nx/eslint-plugin':
+        specifier: 20.7.1
+        version: 20.7.1(@babel/traverse@7.27.0)(@swc-node/register@1.10.10(@swc/core@1.11.16)(@swc/types@0.1.21)(typescript@5.7.3))(@swc/core@1.11.16)(@typescript-eslint/parser@8.29.0(eslint@9.23.0(jiti@2.4.2))(typescript@5.7.3))(eslint-config-prettier@10.1.1(eslint@9.23.0(jiti@2.4.2)))(eslint@9.23.0(jiti@2.4.2))(nx@20.7.1(@swc-node/register@1.10.10(@swc/core@1.11.16)(@swc/types@0.1.21)(typescript@5.7.3))(@swc/core@1.11.16))(typescript@5.7.3)(verdaccio@6.1.2(typanion@3.14.0))
       jsonc-eslint-parser:
         specifier: ^2.4.0
         version: 2.4.0
@@ -24,21 +33,12 @@ importers:
       '@commitlint/config-conventional':
         specifier: 19.8.0
         version: 19.8.0
-      '@eslint/eslintrc':
-        specifier: ^2.1.1
-        version: 2.1.4
-      '@eslint/js':
-        specifier: ^9.24.0
-        version: 9.24.0
       '@nx/esbuild':
         specifier: 20.7.1
         version: 20.7.1(@babel/traverse@7.27.0)(@swc-node/register@1.10.10(@swc/core@1.11.16)(@swc/types@0.1.21)(typescript@5.7.3))(@swc/core@1.11.16)(nx@20.7.1(@swc-node/register@1.10.10(@swc/core@1.11.16)(@swc/types@0.1.21)(typescript@5.7.3))(@swc/core@1.11.16))(verdaccio@6.1.2(typanion@3.14.0))
       '@nx/eslint':
         specifier: 20.7.1
         version: 20.7.1(@babel/traverse@7.27.0)(@swc-node/register@1.10.10(@swc/core@1.11.16)(@swc/types@0.1.21)(typescript@5.7.3))(@swc/core@1.11.16)(@zkochan/js-yaml@0.0.7)(eslint@9.23.0(jiti@2.4.2))(nx@20.7.1(@swc-node/register@1.10.10(@swc/core@1.11.16)(@swc/types@0.1.21)(typescript@5.7.3))(@swc/core@1.11.16))(verdaccio@6.1.2(typanion@3.14.0))
-      '@nx/eslint-plugin':
-        specifier: 20.7.1
-        version: 20.7.1(@babel/traverse@7.27.0)(@swc-node/register@1.10.10(@swc/core@1.11.16)(@swc/types@0.1.21)(typescript@5.7.3))(@swc/core@1.11.16)(@typescript-eslint/parser@8.29.0(eslint@9.23.0(jiti@2.4.2))(typescript@5.7.3))(eslint-config-prettier@10.1.1(eslint@9.23.0(jiti@2.4.2)))(eslint@9.23.0(jiti@2.4.2))(nx@20.7.1(@swc-node/register@1.10.10(@swc/core@1.11.16)(@swc/types@0.1.21)(typescript@5.7.3))(@swc/core@1.11.16))(typescript@5.7.3)(verdaccio@6.1.2(typanion@3.14.0))
       '@nx/jest':
         specifier: 20.7.1
         version: 20.7.1(@babel/traverse@7.27.0)(@swc-node/register@1.10.10(@swc/core@1.11.16)(@swc/types@0.1.21)(typescript@5.7.3))(@swc/core@1.11.16)(@types/node@22.14.0)(babel-plugin-macros@3.1.0)(nx@20.7.1(@swc-node/register@1.10.10(@swc/core@1.11.16)(@swc/types@0.1.21)(typescript@5.7.3))(@swc/core@1.11.16))(ts-node@10.9.1(@swc/core@1.11.16)(@types/node@22.14.0)(typescript@5.7.3))(typescript@5.7.3)(verdaccio@6.1.2(typanion@3.14.0))
