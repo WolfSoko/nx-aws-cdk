@@ -4,8 +4,6 @@
  */
 import { startLocalRegistry } from '@nx/js/plugins/jest/local-registry';
 import { spawn } from 'child_process';
-import { runMany } from 'nx/src/command-line/run-many/run-many';
-import { withRunManyOptions } from 'nx/src/command-line/yargs-utils/shared-options';
 
 export default async () => {
   // local registry target to run
@@ -25,9 +23,13 @@ export default async () => {
     console.log('Attempting to run publish target using spawn...');
 
     // Execute the nx run-many command using spawn
-    // Use 'pnpm exec' which should resolve to the local nx binary.
+    // Use 'npx' which should resolve to the local nx binary.
     // Nx forwards unknown args like --ver and --tag to the underlying executor.
-    await runCommand('npx nx run-many', [
+    // Separate the command ('npx') from its arguments ('nx', 'run-many', ...)
+    await runCommand('npx', [
+      // Base command is 'npx'
+      'nx', // First argument to npx
+      'run-many', // Second argument to npx
       '--target=publish',
       '--ver=1.0.0',
       '--tag=e2e',
@@ -41,19 +43,33 @@ export default async () => {
 };
 
 // Helper function to run a command using spawn and return a Promise
-function runCommand(command: string, args: string[]): Promise<void> {
+function runCommand(baseCommand: string, args: string[]): Promise<void> {
   return new Promise((resolve, reject) => {
-    console.log(`Executing: ${command} ${args.join(' ')}`);
+    // Log the command and arguments correctly
+    console.log(`Executing: ${baseCommand} ${args.join(' ')}`);
 
-    const child = spawn(command, args, {
+    // Spawn the base command with its arguments
+    const child = spawn(baseCommand, args, {
       // Pipe output/error directly to the parent process's streams
       stdio: 'inherit',
+      // The shell option is less critical now but kept for potential Windows edge cases
       shell: process.platform === 'win32',
       env: process.env,
     });
 
     child.on('error', (error) => {
-      reject(new Error(`Failed to start command ${command}: ${error.message}`));
+      // Provide a more informative error message for ENOENT
+      if ((error as NodeJS.ErrnoException).code === 'ENOENT') {
+        reject(
+          new Error(
+            `Command '${baseCommand}' not found. Is it installed and in your PATH? Original error: ${error.message}`
+          )
+        );
+      } else {
+        reject(
+          new Error(`Failed to start command ${baseCommand}: ${error.message}`)
+        );
+      }
     });
 
     child.on('close', (code) => {
@@ -62,7 +78,10 @@ function runCommand(command: string, args: string[]): Promise<void> {
       } else {
         reject(
           new Error(
-            `Command ${command} ${args.join(' ')} failed with exit code ${code}`
+            // Log the command and arguments correctly in the error message
+            `Command ${baseCommand} ${args.join(
+              ' '
+            )} failed with exit code ${code}`
           )
         );
       }
