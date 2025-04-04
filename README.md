@@ -30,13 +30,13 @@ What does it do?
 
 ```sh
 # npm
-npm install --save-dev @nx-iac/aws-cdk
+npm install --save-dev @wolsok/aws-cdk
 
 # yarn
-yarn add --dev @nx-iac/aws-cdk
+yarn add --dev @wolsok/aws-cdk
 
 # pnpm
-pnpm install --save-dev @nx-iac/aws-cdk
+pnpm install --save-dev @wolsok/aws-cdk
 ```
 
 ### Dependencies
@@ -50,7 +50,7 @@ The machine utilising this plugin must be authenticated with AWS. Read more abou
 Prepare AWS environment for AWS CDK
 
 ```sh
-nx g @nx-iac/aws-cdk:bootstrap
+nx g @wolsok/aws-cdk:bootstrap
 ```
 
 ### Generate AWS CDK project
@@ -60,7 +60,7 @@ nx g @nx-iac/aws-cdk:bootstrap
 Create a new application in your Nx workspace, with AWS CDK capabilities
 
 ```sh
-nx g @nx-iac/aws-cdk:app
+nx g @wolsok/aws-cdk:app
 ```
 
 #### Preexisting application
@@ -68,7 +68,7 @@ nx g @nx-iac/aws-cdk:app
 Give AWS CDK capabilities to a preexisting project in your Nx workspace
 
 ```sh
-nx g @nx-iac/aws-cdk:appify
+nx g @wolsok/aws-cdk:appify
 ```
 
 ### Package application
