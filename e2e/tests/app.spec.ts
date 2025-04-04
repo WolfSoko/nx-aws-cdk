@@ -31,7 +31,14 @@ describe('app e2e', () => {
       `generate @wolsok/aws-cdk:app ${project} --directory apps/subdir/${project} --project-name-and-root-format as-provided`
     );
     const result = await runNxCommandAsync(`build ${project}`);
-    expect(result.stdout).toMatch(/Successfully ran target build/);
+
+    // Regex to match ANSI escape codes (for colors, formatting)
+    // eslint-disable-next-line no-control-regex
+    const ansiRegex = /\x1B\[[0-?]*[ -/]*[@-~]/g;
+    const cleanedStdout = result.stdout.replace(ansiRegex, '');
+
+    // Assert against the cleaned string
+    expect(cleanedStdout).toContain('Successfully ran target build');
   }, 120000);
 
   describe('--directory', () => {

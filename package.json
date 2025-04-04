@@ -24,19 +24,18 @@
     "test": "nx run nx-aws-cdk:test"
   },
   "dependencies": {
-    "@nx/devkit": "20.7.1",
-    "tslib": "^2.8.1",
     "@eslint/eslintrc": "^2.1.1",
     "@eslint/js": "^9.24.0",
+    "@nx/devkit": "20.7.1",
     "@nx/eslint-plugin": "20.7.1",
-    "jsonc-eslint-parser": "^2.4.0"
+    "jsonc-eslint-parser": "^2.4.0",
+    "tslib": "^2.8.1"
   },
   "devDependencies": {
     "@commitlint/cli": "19.8.0",
     "@commitlint/config-conventional": "19.8.0",
     "@eslint/eslintrc": "^2.1.1",
     "@eslint/js": "^9.24.0",
-    "jsonc-eslint-parser": "^2.4.0",
     "@nx/esbuild": "20.7.1",
     "@nx/eslint": "20.7.1",
     "@nx/eslint-plugin": "20.7.1",
@@ -49,12 +48,14 @@
     "@swc/core": "1.11.16",
     "@types/jest": "29.5.14",
     "@types/node": "^22.14.0",
+    "@typescript-eslint/eslint-plugin": "^8.29.0",
     "aws-cdk": "^2.1007.0",
     "eslint": "9.23.0",
     "eslint-config-prettier": "10.1.1",
     "husky": "8.0.3",
     "jest": "29.7.0",
     "jest-environment-jsdom": "29.7.0",
+    "jsonc-eslint-parser": "^2.4.0",
     "nx": "20.7.1",
     "prettier": "^2.6.2",
     "ts-jest": "^29.1.0",
