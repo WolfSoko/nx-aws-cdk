@@ -99,6 +99,6 @@ describe('app', () => {
       },
     });
 
-    expect(tree.exists('test-project/.eslintrc.json')).toBeTruthy();
+    expect(tree.exists('test-project/eslint.config.mjs')).toBeTruthy();
   });
 });

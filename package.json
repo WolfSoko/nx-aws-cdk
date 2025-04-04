@@ -25,11 +25,18 @@
   },
   "dependencies": {
     "@nx/devkit": "20.7.1",
-    "tslib": "^2.8.1"
+    "tslib": "^2.8.1",
+    "@eslint/eslintrc": "^2.1.1",
+    "@eslint/js": "^9.24.0",
+    "@nx/eslint-plugin": "20.7.1",
+    "jsonc-eslint-parser": "^2.4.0"
   },
   "devDependencies": {
     "@commitlint/cli": "19.8.0",
     "@commitlint/config-conventional": "19.8.0",
+    "@eslint/eslintrc": "^2.1.1",
+    "@eslint/js": "^9.24.0",
+    "jsonc-eslint-parser": "^2.4.0",
     "@nx/esbuild": "20.7.1",
     "@nx/eslint": "20.7.1",
     "@nx/eslint-plugin": "20.7.1",
@@ -42,8 +49,6 @@
     "@swc/core": "1.11.16",
     "@types/jest": "29.5.14",
     "@types/node": "^22.14.0",
-    "@typescript-eslint/eslint-plugin": "8.29.0",
-    "@typescript-eslint/parser": "8.29.0",
     "aws-cdk": "^2.1007.0",
     "eslint": "9.23.0",
     "eslint-config-prettier": "10.1.1",
@@ -55,6 +60,7 @@
     "ts-jest": "^29.1.0",
     "ts-node": "10.9.1",
     "typescript": "5.7.3",
+    "typescript-eslint": "^8.19.0",
     "uuid": "^9.0.1",
     "verdaccio": "6.1.2"
   },
