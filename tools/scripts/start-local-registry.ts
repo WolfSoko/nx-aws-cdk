@@ -4,6 +4,8 @@
  */
 import { startLocalRegistry } from '@nx/js/plugins/jest/local-registry';
 import { spawn } from 'child_process';
+import { runMany } from 'nx/src/command-line/run-many/run-many';
+import { withRunManyOptions } from 'nx/src/command-line/yargs-utils/shared-options';
 
 export default async () => {
   // local registry target to run
@@ -25,7 +27,7 @@ export default async () => {
     // Execute the nx run-many command using spawn
     // Use 'pnpm exec' which should resolve to the local nx binary.
     // Nx forwards unknown args like --ver and --tag to the underlying executor.
-    await runCommand('pnpm exec nx run-many', [
+    await runCommand('npx nx run-many', [
       '--target=publish',
       '--ver=1.0.0',
       '--tag=e2e',
