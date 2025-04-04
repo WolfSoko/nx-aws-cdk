@@ -1,6 +1,6 @@
 import { Tree, readJson } from '@nx/devkit';
 import { createTreeWithEmptyWorkspace } from '@nx/devkit/testing';
-import { initGenerator } from './init';
+import { CDK_LIB_VERSION, CDK_VERSION, CONSTRUCTS_VERSION, initGenerator, TSX_VERSION } from './init';
 
 describe('init', () => {
   let tree: Tree;
@@ -13,9 +13,9 @@ describe('init', () => {
     await initGenerator(tree);
 
     const packageJson = readJson(tree, 'package.json');
-    expect(packageJson.devDependencies['aws-cdk']).toEqual('^2.102.0');
-    expect(packageJson.devDependencies['aws-cdk-lib']).toEqual('^2.102.0');
-    expect(packageJson.devDependencies['constructs']).toEqual('^10.3.0');
-    expect(packageJson.devDependencies['tsx']).toEqual('^3.14.0');
+    expect(packageJson.devDependencies['aws-cdk']).toEqual(CDK_VERSION);
+    expect(packageJson.devDependencies['aws-cdk-lib']).toEqual(CDK_LIB_VERSION);
+    expect(packageJson.devDependencies['constructs']).toEqual(CONSTRUCTS_VERSION);
+    expect(packageJson.devDependencies['tsx']).toEqual(TSX_VERSION);
   });
 });

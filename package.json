@@ -45,7 +45,7 @@
     "@types/node": "^22.14.0",
     "@typescript-eslint/eslint-plugin": "8.29.0",
     "@typescript-eslint/parser": "8.29.0",
-    "aws-cdk": "^2.102.0",
+    "aws-cdk": "^2.1007.0",
     "eslint": "9.23.0",
     "eslint-config-prettier": "10.1.1",
     "husky": "8.0.3",
