@@ -6,7 +6,7 @@ import {
   uniq,
 } from '@nx/plugin/testing';
 import { names } from '@nx/devkit';
-import * as path from 'node:path';
+import path from 'node:path';
 
 describe('app e2e', () => {
   // Setting up individual workspaces per

@@ -1,20 +1,20 @@
 import {
-  GeneratorCallback,
-  NX_VERSION,
-  Tree,
   addProjectConfiguration,
   ensurePackage,
+  formatFiles,
   generateFiles,
+  GeneratorCallback,
   joinPathFragments,
+  NX_VERSION,
   offsetFromRoot,
   runTasksInSerial,
-  formatFiles,
+  Tree,
 } from '@nx/devkit';
 import { determineProjectNameAndRootOptions } from '@nx/devkit/src/generators/project-name-and-root-utils';
 import { join } from 'path';
 import { appifyGenerator } from '../appify/appify';
 import { AppGeneratorSchema } from './schema';
-import * as path from 'node:path';
+import path from 'node:path';
 
 interface NormalizedSchema extends AppGeneratorSchema {
   projectRoot: string;
@@ -31,8 +31,8 @@ async function normalizeOptions(
       name: options.name,
       projectType: 'application',
       directory: options.directory,
-      importPath: path.join(options.directory , options.name),
-      rootProject: false
+      importPath: path.join(options.directory, options.name),
+      rootProject: false,
     }
   );
 

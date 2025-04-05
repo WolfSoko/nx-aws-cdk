@@ -1,8 +1,8 @@
 import { Tree } from '@nx/devkit';
 import { createTreeWithEmptyWorkspace } from '@nx/devkit/testing';
 import { bootstrapGenerator } from './bootstrap';
-import * as child_process from 'node:child_process';
-import * as path from 'node:path';
+import child_process from 'node:child_process';
+import path from 'node:path';
 
 describe('bootstrap', () => {
   let tree: Tree;

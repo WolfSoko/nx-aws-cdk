@@ -6,8 +6,8 @@ import {
 } from '@nx/devkit';
 import { createTreeWithEmptyWorkspace } from '@nx/devkit/testing';
 import { destroyExecutor } from './destroy';
-import * as child_process from 'node:child_process';
-import * as path from 'node:path';
+import child_process from 'node:child_process';
+import path from 'node:path';
 
 describe('destroy', () => {
   let tree: Tree;

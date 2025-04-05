@@ -5,9 +5,9 @@ import {
   getProjects,
 } from '@nx/devkit';
 import { createTreeWithEmptyWorkspace } from '@nx/devkit/testing';
-import * as child_process from 'node:child_process';
+import child_process from 'node:child_process';
 import { deployExecutor } from './deploy';
-import * as path from 'node:path';
+import path from 'node:path';
 
 describe('deploy', () => {
   let tree: Tree;
