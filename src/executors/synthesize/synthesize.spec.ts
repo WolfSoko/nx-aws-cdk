@@ -6,9 +6,9 @@ import {
 } from '@nx/devkit';
 import { createTreeWithEmptyWorkspace } from '@nx/devkit/testing';
 import { synthesizeExecutor } from './synthesize';
-import * as fs from 'node:fs';
-import * as child_process from 'node:child_process';
-import * as path from 'node:path';
+import fs from 'node:fs';
+import child_process from 'node:child_process';
+import path from 'node:path';
 
 describe('synthesize', () => {
   let tree: Tree;
