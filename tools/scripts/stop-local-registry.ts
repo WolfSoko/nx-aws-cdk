@@ -4,7 +4,11 @@
  */
 
 export default () => {
+  console.log('Stopping local registry...');
   if (global.stopLocalRegistry) {
     global.stopLocalRegistry();
+    console.log('Local registry stopped.');
+    return;
   }
+  console.error('No local registry to stop.');
 };

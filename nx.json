@@ -23,6 +23,7 @@
       "cache": true,
       "inputs": [
         "default",
+
         "{workspaceRoot}/.eslintrc.json",
         "{workspaceRoot}/.eslintignore",
         "{workspaceRoot}/eslint.config.js",
@@ -45,7 +46,7 @@
       "!{projectRoot}/tools/**/*.[jt]s",
       "!{projectRoot}/eslint.config.mjs"
     ],
-    "sharedGlobals": []
+    "sharedGlobals": ["{workspaceRoot}/tools/**/*"]
   },
   "nxCloudAccessToken": "N2ViNzVhMmEtZmU1Yi00N2RmLTkxYmItZDI1OGM5Y2I1NTQ5fHJlYWQtd3JpdGU=",
   "plugins": [

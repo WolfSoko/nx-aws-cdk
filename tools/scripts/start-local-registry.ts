@@ -5,6 +5,9 @@
 import { startLocalRegistry } from '@nx/js/plugins/jest/local-registry';
 import { spawn } from 'child_process';
 
+import { writeFile } from 'node:fs';
+import path from 'node:path';
+
 export default async () => {
   // local registry target to run
   const localRegistryTarget = 'nx-aws-cdk:local-registry';
