@@ -30,9 +30,9 @@ export default async () => {
     // Nx forwards unknown args like --ver and --tag to the underlying executor.
     // Separate the command ('npx') from its arguments ('nx', 'run-many', ...)
     await runCommand('npx', [
-      // Base command is 'npx'
-      'nx', // First argument to npx
-      'run-many', // Second argument to npx
+      'nx',
+      'release',
+      'publish',
       '--target=publish',
       '--ver=1.0.0',
       '--tag=e2e',

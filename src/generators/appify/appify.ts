@@ -55,7 +55,7 @@ function addTargets(tree: Tree, options: NormalizedSchema) {
     targets: {
       ...projectConfiguration.targets,
       package: {
-        executor: '@wolsok/aws-cdk:synthesize',
+        executor: '@wolsok/nx-aws-cdk:synthesize',
         dependsOn: ['build'],
         outputs: ['{options.output}'],
         options: {
@@ -64,7 +64,7 @@ function addTargets(tree: Tree, options: NormalizedSchema) {
         },
       },
       deploy: {
-        executor: '@wolsok/aws-cdk:deploy',
+        executor: '@wolsok/nx-aws-cdk:deploy',
         dependsOn: ['package'],
         defaultConfiguration: 'normal',
         options: {
@@ -80,7 +80,7 @@ function addTargets(tree: Tree, options: NormalizedSchema) {
         },
       },
       destroy: {
-        executor: '@wolsok/aws-cdk:destroy',
+        executor: '@wolsok/nx-aws-cdk:destroy',
         dependsOn: ['package'],
         options: {
           app: `cdk.out/${options.projectRoot}`,

@@ -1,5 +1,5 @@
 {
-  "name": "@wolsok/aws-cdk",
+  "name": "@wolsok/nx-aws-cdk",
   "version": "0.1.0",
   "description": "Empowers your Nx workspace with AWS CDK capabilities ⚡",
   "keywords": [

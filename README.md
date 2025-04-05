@@ -1,5 +1,3 @@
-# forked from @nx-iac/aws-cdk as it seems to not be maintained anymore
-
 Empowers your [Nx](https://nx.dev) workspace with [AWS CDK](https://aws.amazon.com/cdk/) capabilities ⚡
 
 What does it do?
@@ -30,13 +28,13 @@ What does it do?
 
 ```sh
 # npm
-npm install --save-dev @wolsok/aws-cdk
+npm install --save-dev @wolsok/nx-aws-cdk
 
 # yarn
-yarn add --dev @wolsok/aws-cdk
+yarn add --dev @wolsok/nx-aws-cdk
 
 # pnpm
-pnpm install --save-dev @wolsok/aws-cdk
+pnpm install --save-dev @wolsok/nx-aws-cdk
 ```
 
 ### Dependencies
@@ -50,7 +48,7 @@ The machine utilising this plugin must be authenticated with AWS. Read more abou
 Prepare AWS environment for AWS CDK
 
 ```sh
-nx g @wolsok/aws-cdk:bootstrap
+nx g @wolsok/nx-aws-cdk:bootstrap
 ```
 
 ### Generate AWS CDK project
@@ -60,7 +58,7 @@ nx g @wolsok/aws-cdk:bootstrap
 Create a new application in your Nx workspace, with AWS CDK capabilities
 
 ```sh
-nx g @wolsok/aws-cdk:app
+nx g @wolsok/nx-aws-cdk:app
 ```
 
 #### Preexisting application
@@ -68,7 +66,7 @@ nx g @wolsok/aws-cdk:app
 Give AWS CDK capabilities to a preexisting project in your Nx workspace
 
 ```sh
-nx g @wolsok/aws-cdk:appify
+nx g @wolsok/nx-aws-cdk:appify
 ```
 
 ### Package application
@@ -120,6 +118,7 @@ nx destroy <app-name>
 
 ## Thanks
 
+Forked from @nx-iac/aws-cdk
 This plugin is inspired by [@adrian-goe](https://github.com/adrian-goe)'s
 [nx-aws-cdk-v2](https://github.com/adrian-goe/nx-aws-cdk-v2).
 

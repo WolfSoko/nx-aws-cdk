@@ -16,7 +16,7 @@ describe('app e2e', () => {
   // on a unique project in the workspace, such that they
   // are not dependant on one another.
   beforeAll(() => {
-    ensureNxProject('@wolsok/aws-cdk', 'dist/nx-aws-cdk');
+    ensureNxProject('@wolsok/nx-aws-cdk', 'dist/nx-aws-cdk');
   });
 
   afterAll(() => {
@@ -28,7 +28,7 @@ describe('app e2e', () => {
   it('should create application', async () => {
     const project = uniq('app');
     await runNxCommandAsync(
-      `generate @wolsok/aws-cdk:app ${project} --directory apps/subdir/${project} --project-name-and-root-format as-provided`
+      `generate @wolsok/nx-aws-cdk:app ${project} --directory apps/subdir/${project} --project-name-and-root-format as-provided`
     );
     const result = await runNxCommandAsync(`build ${project}`);
 
@@ -45,7 +45,7 @@ describe('app e2e', () => {
     it('should create src in the specified directory', async () => {
       const project = uniq('app');
       await runNxCommandAsync(
-        `generate @wolsok/aws-cdk:app ${project} --directory apps/subdir/${project} --project-name-and-root-format as-provided`
+        `generate @wolsok/nx-aws-cdk:app ${project} --directory apps/subdir/${project} --project-name-and-root-format as-provided`
       );
 
       expect(() =>
@@ -72,7 +72,7 @@ describe('app e2e', () => {
     it('should add tags to the project', async () => {
       const projectName = uniq('app');
       await runNxCommandAsync(
-        `generate @wolsok/aws-cdk:app ${projectName} --directory apps/subdir/${projectName} --project-name-and-root-format as-provided --tags e2etag,e2ePackage`
+        `generate @wolsok/nx-aws-cdk:app ${projectName} --directory apps/subdir/${projectName} --project-name-and-root-format as-provided --tags e2etag,e2ePackage`
       );
       const project = readJson(`apps/subdir/${projectName}/project.json`);
       expect(project.tags).toEqual(['e2etag', 'e2ePackage']);

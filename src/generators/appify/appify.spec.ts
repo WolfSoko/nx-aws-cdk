@@ -35,7 +35,7 @@ describe('appify', () => {
     expect(
       projectConfiguration.targets['package']
     ).toEqual<TargetConfiguration>({
-      executor: '@wolsok/aws-cdk:synthesize',
+      executor: '@wolsok/nx-aws-cdk:synthesize',
       dependsOn: ['build'],
       outputs: ['{options.output}'],
       options: {
@@ -45,7 +45,7 @@ describe('appify', () => {
     });
     expect(projectConfiguration.targets['deploy']).toEqual<TargetConfiguration>(
       {
-        executor: '@wolsok/aws-cdk:deploy',
+        executor: '@wolsok/nx-aws-cdk:deploy',
         dependsOn: ['package'],
         defaultConfiguration: 'normal',
         options: {
@@ -64,7 +64,7 @@ describe('appify', () => {
     expect(
       projectConfiguration.targets['destroy']
     ).toEqual<TargetConfiguration>({
-      executor: '@wolsok/aws-cdk:destroy',
+      executor: '@wolsok/nx-aws-cdk:destroy',
       dependsOn: ['package'],
       options: {
         app: `cdk.out/test-project`,
