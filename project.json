@@ -46,8 +46,7 @@
       "options": {
         "port": 4873,
         "config": ".verdaccio/config.yml",
-        "storage": "tmp/local-registry/storage",
-        "scopes": ["@wolsok"]
+        "storage": "tmp/local-registry/storage"
       }
     },
     "lint": {
